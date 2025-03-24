@@ -1,0 +1,14 @@
+x0 = -b_out/w_out[0]
+x1 = -b_out/w_out[1]
+
+we get this from the following:
+
+x0w0 + x1w1 + b = 0 (0 because that's the appropriate value for decision boundary; the equation in question, x0w0 + x1w1 + b = 0, is equal to z, and when z is 0, the sigmoid function yields 0.5 - g(z)=1/1+e^(-z))
+
+then we have x0 = (-b-x1w1)/w0
+	     x1 = (-b-x0w0)/w1
+
+we need to find the x-intercepts (when x is zero) to plot the graph.
+so, we simplify it to:
+	x0 = (-b-0*w1)/w0 = -b/w0
+	x1 = (-b-0*w0)/w1 = -b/w1
