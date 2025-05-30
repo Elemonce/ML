@@ -124,6 +124,7 @@ class DecisionTree:
         if node.is_leaf_node():
             return node.value
         
+        print(f"Node feature: {x[node.feature]}, Node threshold: {node.threshold}")
         if x[node.feature] <= node.threshold:
             return self._traverse_tree(x, node.left)
         return self._traverse_tree(x, node.right)

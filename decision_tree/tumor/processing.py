@@ -39,7 +39,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 # print(accuracy(y_test, predictions))  
 
-clf = RandomForest(n_trees=20)
+clf = RandomForest(n_trees=10)
 clf.fit(X_train, y_train)
 predictions = clf.predict(X_test)
 print(accuracy(y_test, predictions))
