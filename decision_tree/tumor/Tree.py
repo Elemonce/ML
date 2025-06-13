@@ -37,6 +37,9 @@ class DecisionTree:
         # total number of features that we have; number of features that we want to select from our object; false makes it select only unique 
         # features
         feat_idxs = np.random.choice(n_features, self.n_features, replace=False)
+        # print(f"{n_features}, {self.n_features}, {feat_idxs}, {len(feat_idxs)}")
+        # print(self.n_features)
+        # print(feat_idxs)
         
         # Find the best split
         best_feature, best_thresh = self._best_split(X, y, feat_idxs)
@@ -94,7 +97,9 @@ class DecisionTree:
         return information_gain
 
     def _split(self, X_column, split_thresh):
+        print(X_column)
         left_idxs = np.argwhere(X_column <= split_thresh).flatten()
+        print(left_idxs)
         right_dxs = np.argwhere(X_column > split_thresh).flatten()
 
         return left_idxs, right_dxs
@@ -103,6 +108,7 @@ class DecisionTree:
         # count the number of occurences of each number starting from 0 up until the last int in list incldued
         hist = np.bincount(y)
         ps = hist / len(y)
+        # print(hist, y, ps)
         return -np.sum([p * np.log2(p) for p in ps if p > 0])
 
 
@@ -124,7 +130,7 @@ class DecisionTree:
         if node.is_leaf_node():
             return node.value
         
-        print(f"Node feature: {x[node.feature]}, Node threshold: {node.threshold}")
+        # print(f"Node feature: {x[node.feature]}, Node threshold: {node.threshold}")
         if x[node.feature] <= node.threshold:
             return self._traverse_tree(x, node.left)
         return self._traverse_tree(x, node.right)
