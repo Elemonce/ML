@@ -97,9 +97,9 @@ class DecisionTree:
         return information_gain
 
     def _split(self, X_column, split_thresh):
-        print(X_column)
+        # print(X_column)
         left_idxs = np.argwhere(X_column <= split_thresh).flatten()
-        print(left_idxs)
+        # print(left_idxs)
         right_dxs = np.argwhere(X_column > split_thresh).flatten()
 
         return left_idxs, right_dxs
