@@ -1,7 +1,6 @@
 import numpy as np
 from collections import Counter
 
-print(1)
 
 class Node:
     def __init__(self, feature=None, threshold=None, left=None, right=None,*,value=None):
@@ -24,7 +23,6 @@ class Node:
 
 class DecisionTree:
     def __init__(self, min_examples_split=2, max_depth=100, n_features=None):
-        print(2)
         self.min_examples_split = min_examples_split
         self.max_depth = max_depth
         # The number of features to choose from a given pool of features. (To make it random and have different trees later)
@@ -145,7 +143,8 @@ class DecisionTree:
         # and if p is 1, then there's only one p, or, in other words, one type of label)
         # Think if this is correct at all: (Indicating that the more expected the result is, the less information it brings.)
         # We use log2 because the output is binary. One binary decision is one bit.
-        return -np.sum([-p * np.log2(p) for p in ps if p > 0])
+        return -np.sum([p * np.log2(p) for p in ps if p > 0])
+    
 
     def _most_common_label(self, y):
         counter = Counter(y)
@@ -153,13 +152,15 @@ class DecisionTree:
         # 1 - get only the most common element (if it was, for example, 2, then it means get the two most common elements); returns a tuple of an element and the number of occurences.
         # The first [0] - get the first tuple, as it is a list of tuples. (It just happens in this case that this list has a length of 1 as previously specified)
         # The second [0] - get the first element of the tuple, or the value of the most common label.
+        print(y)
+        print(counter.most_common())
         most_common_label = counter.most_common(1)[0][0]
 
         return most_common_label
     
 
     def predict(self, X):
-        return np.array([self.traverse_tree(x, self.root) for x in X])
+        return np.array([self._traverse_tree(x, self.root) for x in X])
     
     def _traverse_tree(self, x, node):
         print(5)
