@@ -116,8 +116,9 @@ class Perceptron:
         return np.dot(X, self.w_) + self.b_
     
     def predict(self, X):
-        """Return class label after unit step.""" # Unit step is a function that returns either 1 or 0 based on whether 
-        # a given examples passes a given threshold. 
+        """Return class label after unit step.""" 
+        # Unit step is a function that returns 0 on 1
+        # based on whether the number is negative or positive.
 
         # Second argument, 1, is when condition evaluates to True.
         # Third is when it evaluates to False.
