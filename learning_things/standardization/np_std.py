@@ -45,9 +45,18 @@ def min_max_scaling(X):
 X = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9], [19, 0, 0], [10, 11, 12]])
 
 # Number of examples
-print(X.shape[0])
+# print(X.shape[0])
 
-# Number of features
-print(X.shape[1])
-X_scaled = min_max_scaling(X)
-print(X_scaled)
+# # Number of features
+# print(X.shape[1])
+# X_scaled = min_max_scaling(X)
+# print(X_scaled)
+
+data = {
+    'age': [18, 25, 40, 60],
+    'income': [20000, 50000, 80000, 100000]
+}
+import pandas as pd
+df = pd.DataFrame(data)
+
+print(min_max_scaling(df))
